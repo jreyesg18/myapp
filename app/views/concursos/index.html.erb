@@ -1,0 +1,28 @@
+<div class="col-md-6 col-md-offset-3">
+    <h1 class="current-area"><%= params[:area] %></h1>
+</div>
+
+<div class="col-md-6 col-md-offset-3">
+<%if @concursos.count ==0 %>
+  <h3>No hay concurso</h3>
+<%else %>
+
+    <h2>Concurso</h2>
+
+
+  <div class="row">
+
+    <% @concursos.each do |concurso| %>
+
+
+        <h3><span></span><%= link_to concurso.cargo, concurso_path(concurso) %></h3>
+        <h4><span>Fecha termino postulacion: </span><%= concurso.ftermino %></h4>
+        <h4><span>Tipo de Jornada: </span><%= concurso.jornada %></h4>
+        <h4><span>Descripcion del Cargo: </span><%= concurso.descripcion %></h4>
+
+
+    <% end %>
+  </div>
+<%end%>
+
+</div>

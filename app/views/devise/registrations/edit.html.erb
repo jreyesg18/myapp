@@ -1,0 +1,59 @@
+<div class="col-md-6 col-md-offset-3">
+
+  <div class="signup-form">
+
+
+  <h2>Editar Registro<%= resource_name.to_s.humanize %></h2>
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email, required: true, autofocus: true %>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+    <% end %>
+
+
+    <%= f.input :password,
+                hint: "leave it blank if you don't want to change it",
+                required: false,
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.input :password_confirmation,
+                required: false,
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.input :current_password,
+                hint: "we need your current password to confirm your changes",
+                required: true,
+                input_html: { autocomplete: "current-password" } %>
+
+
+      </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Actualizar" %>
+  </div>
+
+
+    <% if current_user && current_user.admin %>
+
+        <h3>Eliminar cuenta</h3>
+
+      <%= f.button :button do %>
+        <%= link_to "Eliminar cuenta", registration_path(resource_name), data: { confirm: "¿Estas Seguro?" }, method: :delete %></p>
+      <% end %>
+
+    <%end %>
+
+      <br>
+    <%= f.button :button do %>
+      <%= link_to "Volver", :back %>
+    <% end %>
+
+    <% end %>
+
+  </div>
+</div>
+
+

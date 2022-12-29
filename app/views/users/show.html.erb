@@ -1,0 +1,30 @@
+<div class="col-md-6 col-md-offset-3">
+
+  <div class="signup-form">
+
+<h1>Detalle de Usuario</h1>
+
+<h1><%= @user.email_com %></h1>
+
+    <% if current_user.admin?%>
+      <% if @user.email== "admin@banco.cl" || @user.email== "admin1@banco.cl" || @user.email== "admin2@banco.cl" || @user.email== "jreyesg@banco.cl" %>
+
+        <h2><strong>Admin:</strong> <%= @user.admin? %></h2>
+        <h2><strong>Nombre:</strong> <%= @user.nombre %></h2>
+        <h1></h1>
+
+      <%else %>
+        <h2><strong>Admin:</strong> <%= @user.admin? %></h2>
+        <h2><strong>Nombre:</strong> <%= @user.nombre %></h2>
+        <h1></h1>
+        <%= link_to 'Editar Usuario', edit_user_path(@user), class: 'btn-custom2' %>
+      <%end%>
+    <%end%>
+
+
+<%= link_to "volver", users_path, class: 'btn-custom2' %>
+
+
+
+</div>
+</div>

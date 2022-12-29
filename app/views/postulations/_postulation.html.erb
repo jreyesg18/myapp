@@ -1,0 +1,26 @@
+<div class="review">
+
+  <p class="review-comment"><span> Nombre: </span><%= postulation.user.nombre %><%=" " %><%= postulation.user.apellidop %><%= %> <%= postulation.user.apellidom %></p>
+  <p class="review-comment"><span> Email: </span><%= postulation.user.email %></p>
+  <p class="review-comment"><span> Cargo Actual: </span><%= postulation.user.cargo %></p>
+  <p class="review-comment"><span> Cargo Idoneo: </span><%= postulation.eleccion %></p>
+
+  <%= link_to 'Curriculum', postulation.document.url, class: "btn btn-custom" %>
+  <br>
+
+<% if user_signed_in? %>
+  <% if current_user.admin?%>
+      <% if postulation.user_id == current_user.id %>
+
+        <div class="links btn-group">
+
+          <%= link_to "edit", edit_concurso_postulation_path(postulation.concurso, postulation), class: "btn btn-custom" %>
+          <%= link_to "delete", concurso_postulation_path(postulation.concurso, postulation), method: :delete, data:{ confirm: "estas seguro?"}, class: "btn btn-custom" %>
+
+        </div>
+      <%end%>
+  <%end%>
+<%end%>
+
+</div>
+

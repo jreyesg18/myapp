@@ -1,0 +1,77 @@
+<div class="row">
+
+  <div class="col-md-4 ">
+
+    <div class="book-show">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Logotipo_Banco_Falabella.svg"
+         alt="Logo Banco"
+         width="400"
+         height="341" >
+    </div>
+
+  </div>
+
+  <div class="col-md-8">
+    <div class="book-info">
+
+      <h2 class="book-title"><span>Nombre del Cargo: </span><%= @concurso.cargo %></h2>
+      <h3 class="book-desc"><span>Area del Cargo: </span><%= @concurso.area.nombre %></h3>
+      <h3 class="book-desc"><span>Cantidad de vacantes: </span><%= @concurso.vacante %></h3>
+      <h3 class="book-desc"><span>Fecha de publicacion: </span><%= @concurso.finicio %></h3>
+      <h3 class="book-desc"><span>Fecha termino seleccion: </span><%= @concurso.ftermino %></h3>
+      <h3 class="book-desc"><span>Tipo de jornada: </span><%= @concurso.jornada %></h3>
+      <h3 class="book-desc"><span>Nombre del Cargo: </span><%= @concurso.descripcion %></h3>
+      <h3 class="book-desc"><span>Tipo de contrato: </span><%= @concurso.contrato %></h3>
+      <h3 class="book-desc"><span>Requisitos minimos: </span><%= @concurso.requisito %></h3>
+      <h3 class="book-desc"><span>Experiencia minima: </span><%= @concurso.eminima %><span> Años</span></h3>
+      <h3 class="book-desc"><span>Nivel de Estudios: </span><%= @concurso.estudio %></h3>
+
+      <%= link_to "volver", root_path, class: "btn btn-custom" %>
+
+      <% if current_user && current_user.admin %>
+
+        <%= link_to "editar", edit_concurso_path(@concurso), class: "btn btn-custom" %>
+        <%= link_to "Eliminar", concurso_path(@concurso), method: :delete, data:{ confirm: "¿Estas seguro?"},class: "btn btn-custom"%>
+      <%end%>
+
+
+    </div>
+  </div>
+</div>
+
+<br>
+
+
+<% if user_signed_in? %>
+
+  <div class="row">
+
+    <div class="col-md-12">
+
+      <div class="reviews">
+
+        <h1> Postulaciones</h1>
+
+          <% if current_user && current_user.admin %>
+
+                <%if @concurso.postulations.count == 0 %>
+                      <h3>No hay Aun postulacion</h3>
+                <%else %>
+                      <%= render @concurso.postulations %>
+                <%end %>
+                <br>
+
+          <%else %>
+                <% if Time.zone.now < @concurso.ftermino %>
+                    <h3 class="book-desc"><span>Si desea postular fecha de termino de postulacion: </span><%= @concurso.ftermino %></h3>
+                   <%= link_to "postular", new_concurso_postulation_path(@concurso), class: "btn btn-custom"  %>
+                <%else %>
+                   <h3><%=" No se puede postular por expiracion de fecha"%></h3>
+                <%end %>
+          <%end%>
+      </div>
+    </div>
+  </div>
+
+<%end%>
+

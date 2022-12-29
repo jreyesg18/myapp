@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cargo: MyString
+  vacante: 1
+  finicio: 2022-11-22
+  ftermino: 2022-11-22
+  descripcion: MyText
+  contrato: MyString
+  jornada: MyString
+  requisito: MyText
+  eminima: 1
+  estudio: MyString
+  dcomputacional: MyString
+
+two:
+  cargo: MyString
+  vacante: 1
+  finicio: 2022-11-22
+  ftermino: 2022-11-22
+  descripcion: MyText
+  contrato: MyString
+  jornada: MyString
+  requisito: MyText
+  eminima: 1
+  estudio: MyString
+  dcomputacional: MyString

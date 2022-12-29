@@ -1,0 +1,25 @@
+
+<div class="col-md-6 col-md-offset-3">
+
+  <div class="new-book-form">
+
+    <h1>Areas</h1>
+
+    <table>
+      <body>
+          <% @areas.each do |area| %>
+              <tr>
+                <h4><%=" - " %><%= link_to area.nombre, area_path(area)  %></h4>
+              </tr>
+          <%end %>
+      </body>
+    </table>
+
+    <br>
+    <%= link_to "agregar area", new_area_path, :class=> 'btn-custom2'  %>
+    <br>
+    <br>
+    <%= link_to "volver", root_path, :class=> 'btn-custom2'  %>
+  </div>
+
+</div>

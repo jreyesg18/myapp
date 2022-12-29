@@ -1,0 +1,42 @@
+<%= simple_form_for([@concurso, @concurso.postulations.build]) do |f|%>
+
+  <% if @postulation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@postulation.errors.count, "Errores") %> Antes de guardar: </h2>
+      <ul>
+        <% @postulation.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <%end%>
+      </ul>
+    </div>
+  <%end%>
+
+
+<h4>De las cuatro opciones, haga clic en una de las alternativas que mas te represente. Debe responder de forma espontánea y honesta, y en el contexto de un entorno de trabajo. </h4>
+  <%= f.input :pr1, label: "1. Pregunta - Tus Estudios son: ", as: :radio_buttons, collection: [['1', ' Técnico'], ['2', 'Universitario'], ['3', 'Con diplomado o especificación'], ['0', 'Otro']], label_method: :second, value_method: :first %>
+  <%= f.input :pr2, label: "2. Pregunta - En base a la pregunta anterior. En qué área realizo su especificación.", as: :radio_buttons, collection: [['0', 'Administración'], ['1', 'Arquitectura'], ['2', 'Cajero Bancario'], ['3', 'Comercial'], ['4', 'Construcción civil'], ['5', 'Contador'], ['6', 'Derecho'], ['7', 'Diseño'], ['8', 'Estadistica'], ['9', 'Financiera'], ['10', 'Informatica '], ['11', 'Prevención de riesgo'], ['12', 'Publicidad'], ['13', 'Psicologia'], ['14', 'Otro'], ['15', 'Ninguna']], label_method: :second, value_method: :first %>
+  <%= f.input :pr3, label: "3. Pregunta", as: :radio_buttons, collection: [['0', 'Recibir atención de otras personas'], ['1', 'Trabajar junto con otros para lograr una meta'], ['0', 'Defender tus derechos'], ['1', 'Mostrar afecto en relaciones personales']], label_method: :second, value_method: :first %>
+  <%= f.input :pr4, label: "4. Pregunta", as: :radio_buttons, collection: [['0', 'Saber cuándo admitir la derrota'], ['1', 'Probar experiencias nuevas'], ['0', 'Permanecer leal a tus amigos'], ['1', 'Ser percibido como divertido por otros']], label_method: :second, value_method: :first %>
+  <%= f.input :pr5, label: "5. Pregunta", as: :radio_buttons, collection: [['0', 'Escuchar ideas nuevas con mente abierta'], ['1', 'Estar listo para hacer un sacrificio por otros'], ['0', 'Mostrar determinación para lograr una meta'], ['1', 'Mantener una perspectiva positiva']], label_method: :second, value_method: :first %>
+  <%= f.input :pr6, label: "6. Pregunta", as: :radio_buttons, collection: [['0', 'Que otras personas disfruten de tu compañía'], ['1', 'Ser meticuloso para conseguir detalle preciso'], ['0', 'Defender tus puntos de vista y opiniones'], ['1', 'Mantenerse tranquilo y ecuánime']], label_method: :second, value_method: :first %>
+  <%= f.input :pr7, label: "7. Pregunta", as: :radio_buttons, collection: [['0', 'Adopta una actitud dominante hacia otros'], ['1', 'Influencia las ideas de otras personas'], ['0', 'Permanece estable y calmado todo el tiempo'], ['1', 'Cumple con instrucciones y reglas']], label_method: :second, value_method: :first %>
+  <%= f.input :pr8, label: "8. Pregunta", as: :radio_buttons, collection: [['0', 'Explicar las cosas con precisión cuando se requiera'], ['1', 'Seguir las reglas en todo momento'], ['0', 'Tener control de tu vida'], ['1', 'Disfrutar de todo lo que haces']], label_method: :second, value_method: :first %>
+  <%= f.input :pr9, label: "9. Pregunta", as: :radio_buttons, collection: [['0', 'Estar listo para tomar riesgos cuando se requiera'], ['1', 'Comunicarse de una forma que inspire'], ['0', 'Aceptar la parte que te tocó en la vida'], ['1', 'Preservar el status quo']], label_method: :second, value_method: :first %>
+  <%= f.input :pr10, label: "10. Pregunta", as: :radio_buttons, collection: [['0', 'Disfrutar la compañía de otras personas'], ['1', 'Aceptar faltas en otros'], ['0', 'Estar seguro de tus propias habilidades'], ['1', 'Evitar situaciones confrontativas']], label_method: :second, value_method: :first %>
+  <%= f.input :pr11, label: "11. Pregunta", as: :radio_buttons, collection: [['0', 'Sacar plena ventaja de las oportunidades'], ['1', 'Ser receptivo a nuevas ideas'], ['0', 'Ser amigable y cordial cuando quiera que sea posible'], ['1', 'Comportarse de una forma moderada y contenida']], label_method: :second, value_method: :first %>
+  <%= f.input :pr12, label: "12. Pregunta", as: :radio_buttons, collection: [['0', 'Expresar ideas a otras personas'], ['1', 'Mantener una actitud auto-disciplinada'], ['0', 'Seguir las convenciones cuando sea posible'], ['1', 'Tomar decisiones y mantenerse firme en ellas']], label_method: :second, value_method: :first %>
+  <%= f.input :pr13, label: "13. Pregunta", as: :radio_buttons, collection: [['0', 'Comportarse compasivamente con otros'], ['1', 'Persuadir a otros de tu punto de vista'], ['0', 'Producir ideas originales'], ['1', 'Mostrar modestia al describir tus logros']], label_method: :second, value_method: :first %>
+  <%= f.input :pr14, label: "14. Pregunta", as: :radio_buttons, collection: [['0', 'Tomar el control cuando una situación lo requiera'], ['1', 'Ser el centro de atención'], ['0', 'Ayudar a otras personas cuando puedas'], ['1', 'Evitar riesgos innecesarios']], label_method: :second, value_method: :first %>
+  <%= f.input :pr15, label: "15. Pregunta", as: :radio_buttons, collection: [['0', 'Tener cuidado para que las cosas salgan exactamente bien'], ['1', 'Rehusarse a aceptar la derrota'], ['0', 'Tener un impacto positivo en la vida de otras personas'], ['1', 'Dar a otros el beneficio de la duda']], label_method: :second, value_method: :first %>
+  <%= f.input :pr16, label: "16. Pregunta", as: :radio_buttons, collection: [['0', 'Ofrecerse voluntario para ayudar a otros'], ['1', 'Disfrutar de tu trabajo'], ['0', 'Pactar una solución cuando puedas'], ['1', 'Abordar a los problemas de una forma dinámica y original']], label_method: :second, value_method: :first %>
+  <%= f.input :pr17, label: "17. Pregunta", as: :radio_buttons, collection: [['0', 'Esperar que las cosas salgan lo mejor posible'], ['1', 'Simpatizar con los problemas de los demás'], ['0', 'Tratar calmadamente con situaciones difíciles'], ['1', 'Exigir estándares altos']], label_method: :second, value_method: :first %>
+
+<br>
+  <%= f.file_field :document %>
+
+<%= f.button :submit, "Crear postulacion"%>
+  <%= f.button :button do %>
+    <%= link_to "volver", concurso_path(@concurso) %>
+  <% end %>
+
+<% end %>

@@ -1,0 +1,25 @@
+<%= simple_form_for @area, :html => {:multipart =>true } do |f| %>
+
+  <% if @area.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@area.errors.count, "Error") %> antes de guardar: </h2>
+
+      <ul>
+        <% @area.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <%end%>
+      </ul>
+    </div>
+  <%end%>
+
+  <%= f.input :nombre, label: "Nombre del Area" %>
+  <%= f.button :submit,"Crear Area", :class=> 'btn-custom2' %>
+
+  <%= link_to "volver",  areas_path, :class=> 'btn-custom2' %>
+
+
+<%end%>
+
+
+
+

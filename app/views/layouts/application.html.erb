@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <nav class="navbar navbar-default">
+
+    <div class="container">
+
+      <div class="navbar-header">
+        <%= link_to "Concurso", root_path, class: "navbar-brand" %>
+      </div>
+
+      <ul class="nav navbar-nav">
+
+
+        <%if user_signed_in? %>
+
+        <%else%>
+
+        <%end %>
+
+
+      </ul>
+
+
+      <ul class="nav navbar-nav navbar-right">
+
+
+        <li class=" dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Areas <span class="caret"></span></a>
+          <ul class ="dropdown-menu" role="menu">
+            <% Area.all.each do |area| %>
+              <li class="<%='active' if params[:area] ==area.nombre %>" >
+                <%= link_to area.nombre, concursos_path(area: area.nombre), class: "link" %>
+              </li>
+            <% end %>
+
+            <% if user_signed_in?%>
+              <% if current_user && current_user.admin %>
+                <li><%= link_to "Agregar Area", areas_path%></li>
+              <%end%>
+            <%end%>
+
+          </ul>
+        </li>
+
+        <% if user_signed_in?%>
+          <% if current_user.admin?%>
+
+            <% if current_user.email == "admin@banco.cl" || current_user.email == "admin1@banco.cl" || current_user.email == "admin2@banco.cl" || current_user.email == "jreyesg@banco.cl"%>
+
+                <li><%= link_to "Usuarios", users_path%></li>
+                <li><%= link_to "Agregar Concurso", new_concurso_path %></li>
+                <li><%= link_to current_user.email%> </li>
+                <li><%= link_to "salir", destroy_user_session_path, method: :delete %></li>
+            <%else %>
+
+                <li><%= link_to "Agregar concurso", new_concurso_path %></li>
+                <li><%= link_to current_user.email, edit_user_registration_path %> </li>
+                <li><%= link_to "salir", destroy_user_session_path, method: :delete %></li>
+            <%end%>
+
+            <%else %>
+            <li><%= link_to current_user.email, edit_user_registration_path %> </li>
+            <li><%= link_to "salir", destroy_user_session_path, method: :delete %></li>
+
+          <%end%>
+        <%else %>
+          <li><%=link_to "Registrarse", new_user_registration_path %></li>
+          <li><%=link_to "Entrar", new_user_session_path %></li>
+        <%end%>
+      </ul>
+
+    </div>
+  </nav>
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+
+  </body>
+</html>
+

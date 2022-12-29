@@ -1,0 +1,49 @@
+<div class="col-md-6 col-md-offset-3">
+
+  <div class="new-book-form">
+
+    <% if @concurso.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@concurso.errors.count, "Errores") %> Antes de guardar: </h2>
+
+        <ul>
+          <% @concurso.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <%end%>
+
+        </ul>
+      </div>
+    <%end%>
+
+
+    <h1>Modificar cargo</h1>
+
+<%= simple_form_for @concurso, :html => {:multipart =>true } do |f| %>
+
+
+      <%= f.input :cargo, label: "Nombre Cargo" %>
+
+      <%= f.input :vacante, collection: 1..100, prompt: "Años de experiencia", selected: 1 %>
+
+      <%= f.input :ftermino, as: :date, label:"Fecha Termino proceso"%>
+      <%= f.input :descripcion, :prompt => "Descripcion"%>
+      <%= f.input :contrato, priority: ["Por Proyecto"], collection: ["Indefinido", "A plazo", "Por Proyecto", "Reemplazo", "Practica/Pasantia"]%>
+      <%= f.input :jornada, priority: ["Full Time"], collection: [" Presencial Full Time", "presencial Part Time", "Presencial/remoto Full Time", "Presencial/remoto Part Time", "Remoto Full Time", "Remoto Part Time" ]%>
+      <%= f.input :requisito, :prompt => "Requisito"%>
+      <%= f.input :eminima, label: "Años Experiencias", collection: 0..7, prompt: "Años de experiencia", selected: 0%>
+      <%= f.input :estudio, label: "Nivel De Estudio", priority: ["Universitario"], collection: ["Postgrado", "Universitario Completo", "Universitario Incompleto", "Enseñanza Media", "Enseñanza Media"]%>
+      <%= f.input :dcomputacional, label: "Nivel computacional (Office)" ,priority: ["Sin Experiencia"], collection: ["Sin Experiencia", "Basico", "Intermedio", "Experto"]%>
+
+      <%= f.button :submit,"Modificar Concurso" %>
+
+
+      <%= f.button :button do %>
+        <%= link_to "volver", root_path %>
+      <% end %>
+
+<%end%>
+
+
+  </div>
+
+</div>
